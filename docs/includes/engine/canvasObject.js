@@ -82,6 +82,7 @@ export class GamePolygon {
                 this.div.style.border = `${w}px solid ${this.stroke}`;
             }
             this.div.style.clipPath = `${clipStr})`;
+            // for whatever reason, -webkit-clip-path isn't an attribute.
             this.div.setAttribute('style', `${this.div.getAttribute('style')};-webkit-clip-path: ${clipStr}`);
         }
     }
