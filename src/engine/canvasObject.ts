@@ -110,6 +110,7 @@ export class GamePolygon implements GameObject {
                 this.div.style.border = `${w}px solid ${this.stroke}`;
             }
             this.div.style.clipPath = `${clipStr})`;
+            this.div.setAttribute('style', `${this.div.getAttribute('style')};-webkit-clip-path: ${clipStr}`);
         }
     }
 
@@ -184,7 +185,9 @@ export class GameCircle {
             this.div.style.top = `${pos.y}px`;
             this.div.style.width = `${r * 2}px`;
             this.div.style.height = `${r * 2}px`;
-            this.div.style.clipPath = `ellipse(${r}px ${r}px at 50% 50%)`;
+            let clipStr = `ellipse(${r}px ${r}px at 50% 50%)`
+            this.div.style.clipPath = clipStr;
+            this.div.setAttribute('style', `${this.div.getAttribute('style')};-webkit-clip-path: ${clipStr}`);
         }
     }
 }
@@ -291,7 +294,9 @@ export class GameAnimatedImage extends GameImage {
         this.div.style.backgroundImage = `url(${this.img.src})`;
         clipPos = game.renderEngine.convertN(clipPos);
         let right = img.x - clipPos - game.renderEngine.convertN(this.frameWidth);
-        this.div.style.clipPath = `inset(${0}px ${right}px ${0}px ${clipPos}px)`;
+        let clipStr = `inset(${0}px ${right}px ${0}px ${clipPos}px)`
+        this.div.style.clipPath = clipStr;
+        this.div.setAttribute('style', `${this.div.getAttribute('style')};-webkit-clip-path: ${clipStr}`);
     }
 }
 
